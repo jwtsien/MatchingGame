@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Round {{ subsession.round_number }} - Enter your bid function
+{% endblock %}
+
+{% block content %}
+    <p>
+        Please enter your Python function definition for this round.
+        It must be a function named <code>bid</code>.
+    </p>
+
+    <pre>
+def bid(player, x, surplus):
+    return x * surplus * 0.5 + player
+
+def bid(player, x, surplus):
+    base_bid = 0.2 * surplus
+    adjustment = x * 0.1 * surplus
+    player_bonus = 0.05 * player
+    return base_bid + adjustment + player_bonus
+    </pre>
+
+    {{ formfields }}
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+{% endblock %}

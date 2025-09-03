@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Round {{ round_num }} - Matching Result
+{% endblock %}
+
+{% block content %}
+    <h4>Matching result for this round:</h4>
+    <p>{{ match_result }}</p>
+
+    <h4>Unmatched Agents for this round:</h4>
+    <p>{{ unmatch_result }}</p>
+
+    <button class="btn btn-primary" type="submit">Next</button>
+{% endblock %}
