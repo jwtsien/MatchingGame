@@ -11,11 +11,11 @@ def extract_function_source(code_text: str, func_name: str) -> str:
             return "\n".join(func_lines)
     return None
 
-def load_bid_function(text):
+def load_bid_function(text, func_name):
     """
     Extract the bid_function from the text and then return a callable object.
     """
-    source = extract_function_source(text)
+    source = extract_function_source(text, func_name)
     local_vars = {}
     exec(source, {}, local_vars)
     if "bid" not in local_vars:

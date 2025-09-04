@@ -12,14 +12,8 @@
     </p>
 
     <pre>
-def bid(player, x, surplus):
-    return x * surplus * 0.5 + player
-
-def bid(player, x, surplus):
-    base_bid = 0.2 * surplus
-    adjustment = x * 0.1 * surplus
-    player_bonus = 0.05 * player
-    return base_bid + adjustment + player_bonus
+def bid(x, surplus):
+    return x * 0.5 + surplus
     </pre>
 
     {{ formfields }}

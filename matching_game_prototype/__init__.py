@@ -25,16 +25,16 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    bid = models.LongStringField(
+    bid_text = models.LongStringField(
         # label="Please enter you bid function (Ex: def bid(player, x, surplus): return x * surplus)"
     )
 
 class InputBid(Page):
     form_model = "player"
-    form_fields = ["bid"]
+    form_fields = ["bid_text"]
 
 class WaitForBid(WaitPage):
-    wait_for_all_groups = True
+    # wait_for_all_groups = True
 
     @staticmethod
     def after_all_players_arrive(group: Group):
@@ -47,8 +47,8 @@ class WaitForBid(WaitPage):
         players = group.get_players()
 
         # Relod the bid_functions provided by the players
-        func1 = load_bid_function(players[0].bid)
-        func2 = load_bid_function(players[1].bid)
+        func1 = load_bid_function(players[0].bid_text, str("bid"))
+        func2 = load_bid_function(players[1].bid_text, str("bid"))
 
         half = the_population.I // 2
         # The first half agents use the first bid function
